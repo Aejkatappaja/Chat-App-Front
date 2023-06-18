@@ -22,8 +22,11 @@ export const AuthForm = () => {
       }
     >
       {variant === "LOGIN" && (
-        <div className="flex items-center font-bold text-xl  w-[32rem] tracking-wider text-sonup justify-center gap-5 pb-6">
-          <h2>Try out our experimental chat app</h2>
+        <div className="flex items-center font-bold text-xl w-[32rem] tracking-widest text-sonup justify-center gap-5 pb-6">
+          <div>
+            Try out our experimental
+            <span className="text-orange"> chat app</span>
+          </div>
           <Image src="/chat-logo.png" alt="sonup-logo" width={80} height={50} />
         </div>
       )}

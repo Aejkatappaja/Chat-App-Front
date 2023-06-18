@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --sonup: #417571;
-  background-color: var(--sonup);
+  --sonup: #538884;
+  background-color: var(--test);
+  --test: #add0de;
 }
