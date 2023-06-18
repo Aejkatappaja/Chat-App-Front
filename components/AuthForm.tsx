@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Image from "next/image";
 import axios from "axios";
 import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
@@ -17,9 +18,15 @@ export const AuthForm = () => {
       className={
         variant === "REGISTER"
           ? "h-[25rem] w-full pb-7 flex flex-col items-center justify-between"
-          : "h-[25rem] w-full pb-7 flex flex-col items-center justify-end gap-16"
+          : "h-[25rem] w-full pb-7 flex flex-col items-center justify-end gap-6"
       }
     >
+      {variant === "LOGIN" && (
+        <div className="flex items-center font-bold text-xl  w-[32rem] tracking-wider text-sonup justify-center gap-5 pb-6">
+          <h2>Try out our experimental chat app</h2>
+          <Image src="/chat-logo.png" alt="sonup-logo" width={80} height={50} />
+        </div>
+      )}
       {variant === "REGISTER" && (
         <Input
           htmlFor="username"
