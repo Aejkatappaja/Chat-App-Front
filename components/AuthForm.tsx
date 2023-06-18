@@ -48,14 +48,14 @@ export const AuthForm = () => {
         icon={
           !inputPasswordVisibility ? (
             <FaEyeSlash
-              className="text-sonup text-xl"
+              className="text-sonup text-xl absolute right-4"
               onClick={() =>
                 setInputPasswordVisibility(!inputPasswordVisibility)
               }
             />
           ) : (
             <FaEye
-              className="text-sonup text-xl"
+              className="text-sonup text-xl absolute right-4"
               onClick={() =>
                 setInputPasswordVisibility(!inputPasswordVisibility)
               }
@@ -73,14 +73,14 @@ export const AuthForm = () => {
           icon={
             !inputPasswordVisibility ? (
               <FaEyeSlash
-                className="text-sonup text-xl"
+                className="text-sonup text-xl absolute right-4"
                 onClick={() =>
                   setInputPasswordVisibility(!inputPasswordVisibility)
                 }
               />
             ) : (
               <FaEye
-                className="text-sonup text-xl"
+                className="text-sonup text-xl absolute right-4"
                 onClick={() =>
                   setInputPasswordVisibility(!inputPasswordVisibility)
                 }
@@ -90,13 +90,17 @@ export const AuthForm = () => {
         />
       )}
       <div>
-        <Button className="relative">
+        <Button className="relative" type="submit">
           {variant === "LOGIN" ? "Login" : "Register"}
         </Button>
         <p
           className="absolute pt-3 text-center w-[32rem] font-base text-sonup text-sm hover:underline cursor-default"
           onClick={() => {
-            variant === "LOGIN" ? setVariant("REGISTER") : setVariant("LOGIN");
+            {
+              variant === "LOGIN"
+                ? setVariant("REGISTER")
+                : setVariant("LOGIN");
+            }
           }}
         >
           {variant === "LOGIN"
