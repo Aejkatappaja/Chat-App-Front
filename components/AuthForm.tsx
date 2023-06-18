@@ -12,6 +12,8 @@ export const AuthForm = () => {
   const [variant, setVariant] = React.useState<Variant>("REGISTER");
   const [inputPasswordVisibility, setInputPasswordVisibility] =
     React.useState<boolean>(false);
+  const [email, setEmail] = React.useState<string>("");
+
   return (
     <form
       action=""
@@ -39,7 +41,13 @@ export const AuthForm = () => {
         />
       )}
 
-      <Input htmlFor="email" spanTitle="E-mail" id="email" type="email" />
+      <Input
+        htmlFor="email"
+        spanTitle="E-mail"
+        id="email"
+        type="email"
+        onChange={(e) => setEmail(e.target.value)}
+      />
       <Input
         htmlFor="password"
         spanTitle="Password"
