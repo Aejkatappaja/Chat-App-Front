@@ -2,9 +2,10 @@
 import React from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Image from "next/image";
-import axios from "axios";
 import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
+import { toast } from "react-hot-toast";
+import { Login } from "@/api/Login";
 
 type Variant = "LOGIN" | "REGISTER";
 
@@ -13,10 +14,38 @@ export const AuthForm = () => {
   const [inputPasswordVisibility, setInputPasswordVisibility] =
     React.useState<boolean>(false);
   const [email, setEmail] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      // const response: AxiosResponse = await axios.post(
+      //   "http://localhost:4000/login",
+      //   {
+      //     email,
+      //     password,
+      //   }
+      // );
+      if (!email || !password) {
+        toast.error(`You must fill all inputs!`);
+        return;
+      }
+      const response = await Login(email, password);
+      console.log(response);
+      alert("success");
+      setIsLoading(false);
+    } catch (error: any) {
+      console.error({ message: error.message });
+      toast.error("NOPE");
+    }
+  };
 
   return (
     <form
       action=""
+      onSubmit={handleRegister}
       className={
         variant === "REGISTER"
           ? "h-[25rem] w-full pb-7 flex flex-col items-center justify-between"
@@ -49,6 +78,7 @@ export const AuthForm = () => {
         onChange={(e) => setEmail(e.target.value)}
       />
       <Input
+        onChange={(e) => setPassword(e.target.value)}
         htmlFor="password"
         spanTitle="Password"
         id="password"
@@ -98,7 +128,7 @@ export const AuthForm = () => {
         />
       )}
       <div>
-        <Button className="relative" type="submit">
+        <Button className="relative" type="submit" disabled={isLoading}>
           {variant === "LOGIN" ? "Login" : "Register"}
         </Button>
         <p

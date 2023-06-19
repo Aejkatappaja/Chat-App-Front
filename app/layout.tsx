@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Roboto_Condensed } from "next/font/google";
+import toast, { Toaster } from "react-hot-toast";
 
 const robotoCondensed = Roboto_Condensed({
   subsets: ["latin"],
@@ -19,7 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={robotoCondensed.className}>{children}</body>
+      <body className={robotoCondensed.className}>
+        <Toaster />
+        {children}
+      </body>
     </html>
   );
 }
