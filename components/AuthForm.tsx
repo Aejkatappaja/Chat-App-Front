@@ -5,47 +5,78 @@ import Image from "next/image";
 import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
 import { toast } from "react-hot-toast";
-import { Login } from "@/api/Login";
+import { UserLogin } from "@/api/Login";
+import { Spinner } from "./ui/Spinner";
+import { UserRegister } from "@/api/Register";
+import { useRouter } from "next/navigation";
 
 type Variant = "LOGIN" | "REGISTER";
 
 export const AuthForm = () => {
+  const router = useRouter();
   const [variant, setVariant] = React.useState<Variant>("REGISTER");
   const [inputPasswordVisibility, setInputPasswordVisibility] =
     React.useState<boolean>(false);
   const [email, setEmail] = React.useState<string>("");
+  const [username, setUsername] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
+  const [passwordConfirm, setPasswordConfirm] = React.useState<string>("");
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
-  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleUserLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      // const response: AxiosResponse = await axios.post(
-      //   "http://localhost:4000/login",
-      //   {
-      //     email,
-      //     password,
-      //   }
-      // );
       if (!email || !password) {
         toast.error(`You must fill all inputs!`);
         return;
       }
-      const response = await Login(email, password);
-      console.log(response);
-      alert("success");
+      const response = await UserLogin({ email: email, password: password });
+      toast.success("Online");
       setIsLoading(false);
+      router.push("/sdfs");
     } catch (error: any) {
       console.error({ message: error.message });
-      toast.error("NOPE");
+      toast.error("Error");
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  return (
+  const handleUserRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      if (!email || !password || !username) {
+        toast.error(`You must fill all inputs!`);
+        return;
+      }
+      if (password !== passwordConfirm) {
+        toast.error("Passwords doesn't match");
+        return;
+      }
+      const response = await UserRegister({
+        email: email,
+        password: password,
+        username: username,
+      });
+      toast.success("Registered");
+    } catch (error: any) {
+      console.error({ message: error.message });
+      toast.error("Error");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return isLoading ? (
+    <div className="h-[25rem] w-full pb-7 flex flex-col items-center justify-center">
+      <Spinner />
+    </div>
+  ) : (
     <form
       action=""
-      onSubmit={handleRegister}
+      onSubmit={variant === "LOGIN" ? handleUserLogin : handleUserRegister}
       className={
         variant === "REGISTER"
           ? "h-[25rem] w-full pb-7 flex flex-col items-center justify-between"
@@ -63,6 +94,7 @@ export const AuthForm = () => {
       )}
       {variant === "REGISTER" && (
         <Input
+          onChange={(e) => setUsername(e.target.value)}
           htmlFor="username"
           spanTitle="Username"
           id="username"
@@ -104,6 +136,7 @@ export const AuthForm = () => {
 
       {variant === "REGISTER" && (
         <Input
+          onChange={(e) => setPasswordConfirm(e.target.value)}
           htmlFor="confirmPassword"
           spanTitle="Confirm Password"
           id="confirmPassword"
