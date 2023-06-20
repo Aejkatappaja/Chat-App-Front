@@ -34,7 +34,7 @@ export const AuthForm = () => {
       const response = await UserLogin({ email: email, password: password });
       toast.success("Online");
       setIsLoading(false);
-      router.push("/sdfs");
+      router.push("/chat");
     } catch (error: any) {
       console.error({ message: error.message });
       toast.error("Error");
@@ -61,6 +61,7 @@ export const AuthForm = () => {
         username: username,
       });
       toast.success("Registered");
+      console.log(response);
     } catch (error: any) {
       console.error({ message: error.message });
       toast.error("Error");
