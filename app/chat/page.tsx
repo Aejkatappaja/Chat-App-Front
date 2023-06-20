@@ -6,7 +6,8 @@ interface ChatPageProps {}
 export default function ChatPage({}) {
   return (
     <Container>
-      <div className="w-[20rem] h-[40rem] bg-white shadow-inner shadow-black rounded-3xl mr-2 flex flex-col items-center">
+      <div className="w-[8rem] h-[40rem] bg-white shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-tl-3xl rounded-bl-3xl flex flex-col items-center"></div>
+      <div className="w-[20rem] h-[40rem] bg-white flex flex-col items-center shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] ">
         <div className=" w-full h-10 flex justify-center items-center mt-3 text-lg tracking-wider">
           Members
         </div>
@@ -23,7 +24,7 @@ export default function ChatPage({}) {
           </ul>
         </div>
       </div>
-      <div className="w-[55rem] h-[40rem] bg-white shadow-inner shadow-black rounded-3xl"></div>
+      <div className="w-[45rem] h-[40rem] bg-white rounded-tr-3xl rounded-br-3xl flex flex-col items-center shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"></div>
     </Container>
   );
 }
