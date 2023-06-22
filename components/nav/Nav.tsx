@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import navVariants from "./navVariant";
 import { NavButton } from "./NavButton";
