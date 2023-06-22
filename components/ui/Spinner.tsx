@@ -7,7 +7,7 @@ export const Spinner = () => {
         className="animate-spin inline-block w-12 h-12 border-4 border-current border-t-transparent text-orange rounded-full"
         role="status"
         aria-label="loading"
-      ></div>{" "}
+      ></div>
       <span className="font-base text-sonup tracking-widest">Loading...</span>
     </div>
   );
