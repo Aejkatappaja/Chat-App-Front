@@ -15,7 +15,9 @@ export const NavButton: React.FC<NavButtonProps> = ({ variant }) => {
           ? "bg-[pink] w-16 h-16 rounded-xl flex justify-center items-center text-white text-3xl font-bold shadow-inner shadow-black duration-1000 hover:cursor-pointer"
           : "w-16 h-16 shadow-nav flex items-center justify-center rounded-xl duration-1000 hover:cursor-pointer"
       }
-      onClick={() => handleClick(variant)}
+      onClick={() => {
+        handleClick(variant), activeButton === variant && handleClick("");
+      }}
     >
       <IconSwitcher variant={variant} />
     </div>

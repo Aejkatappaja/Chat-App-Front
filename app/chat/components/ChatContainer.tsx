@@ -6,7 +6,7 @@ interface ChatContainerProps {
 
 export const ChatContainer: React.FC<ChatContainerProps> = ({ children }) => {
   return (
-    <div className="w-[65rem] h-[40rem] bg-none rounded-tr-3xl rounded-br-3xl flex relative">
+    <div className="w-[68rem] h-[40rem] bg-none rounded-tr-3xl rounded-br-3xl flex justify-between relative">
       {children}
     </div>
   );
