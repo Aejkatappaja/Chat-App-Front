@@ -1,10 +1,10 @@
 import React from "react";
 
-interface ContainerProps {
+interface MainContainerProps {
   children: React.ReactNode;
 }
 
-export const Container: React.FC<ContainerProps> = ({ children }) => {
+export const MainContainer: React.FC<MainContainerProps> = ({ children }) => {
   return (
     <section className="flex justify-center items-center h-[100vh]">
       {children}

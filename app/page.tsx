@@ -1,10 +1,10 @@
 import { AuthForm } from "@/components/AuthForm";
-import { Container } from "../components/ui/Container";
+import { MainContainer } from "../components/ui/MainContainer";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <Container>
+    <MainContainer>
       <div className="w-[42rem] h-[35rem] shadow-inner shadow-black rounded-3xl bg-white flex items-center flex-col justify-around font-robotoCondensed">
         <Image
           src="/sonup.png"
@@ -15,6 +15,6 @@ export default function Home() {
         />
         <AuthForm />
       </div>
-    </Container>
+    </MainContainer>
   );
 }

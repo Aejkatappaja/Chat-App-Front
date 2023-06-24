@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-interface BearState {
+interface NavState {
   variant: string;
   activeButton: string | null;
   setActiveButton: (activeButton: string | null) => void;
@@ -8,7 +8,7 @@ interface BearState {
   handleClick: (variant: string) => void;
 }
 
-const useNavContent = create<BearState>((set) => ({
+const useNavContent = create<NavState>((set) => ({
   variant: "",
   activeButton: null,
   setActiveButton: (active) => set({ activeButton: active }),

@@ -1,6 +1,6 @@
 import React from "react";
 import IconSwitcher from "./IconSwitcher";
-import useNavContent from "@/state/store";
+import useNavContent from "@/state/navStore";
 
 interface NavButtonProps {
   variant: string;
