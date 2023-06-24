@@ -1,3 +1,3 @@
-const navVariants = ["USER", "HOME", "CHAT", "SEARCH", "SETTINGS"];
+const navVariants = ["HOME", "USER", "CHAT", "SEARCH", "SETTINGS"];
 
 export default navVariants;
